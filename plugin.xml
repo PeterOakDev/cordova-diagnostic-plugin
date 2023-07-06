@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova.plugins.diagnostic"
-    version="7.1.2">
+    xmlns:android="http://schemas.android.com/apk/res/android" id="cordova.plugins.diagnostic" version="7.1.2">
 
     <name>Diagnostic</name>
     <description>Cordova/Phonegap plugin to check the state of Location/WiFi/Camera/Bluetooth device settings.</description>
@@ -50,43 +48,18 @@
         <framework src="CoreLocation.framework" />
 
         <config-file target="*-Info.plist" parent="NSLocationWhenInUseUsageDescription" comment="Default usage descriptions: override as necessary in .plist">
-            <string>This app requires access to your location when the screen is on and the app is displayed.</string>
+            <string>BOSS Time Attendance Mobile uses your location to verify that you are in the correct location for your shift when checked in/out, and to show the location of events submitted through the app.</string>
         </config-file>
 
         <config-file target="*-Info.plist" parent="NSLocationAlwaysAndWhenInUseUsageDescription" comment="iOS 11 or greater">
-            <string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
+            <string>BOSS Time Attendance Mobile uses your location to verify that you are in the correct location for your shift when checked in/out, and to show the location of events submitted through the app.</string>
         </config-file>
 
         <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription" comment="iOS 10">
-            <string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
+            <string>BOSS Time Attendance Mobile uses your location to verify that you are in the correct location for your shift when checked in/out, and to show the location of events submitted through the app.</string>
         </config-file>
         <!--END_MODULE LOCATION-->
 
-        <!--BEGIN_MODULE BLUETOOTH-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Bluetooth">
-                <param name="ios-package" value="Diagnostic_Bluetooth" />
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-
-        <js-module src="www/ios/diagnostic.bluetooth.js" name="Diagnostic_Bluetooth">
-            <merges target="cordova.plugins.diagnostic.bluetooth" />
-        </js-module>
-
-        <header-file src="src/ios/Diagnostic_Bluetooth.h" />
-        <source-file src="src/ios/Diagnostic_Bluetooth.m" />
-
-        <framework src="CoreBluetooth.framework" />
-
-        <config-file target="*-Info.plist" parent="NSBluetoothPeripheralUsageDescription">
-            <string>This app requires Bluetooth access to function properly.</string>
-        </config-file>
-
-        <config-file target="*-Info.plist" parent="NSBluetoothAlwaysUsageDescription">
-            <string>This app requires constant Bluetooth access to function properly.</string>
-        </config-file>
-        <!--END_MODULE BLUETOOTH-->
 
         <!--BEGIN_MODULE WIFI-->
         <config-file target="config.xml" parent="/*">
@@ -121,11 +94,11 @@
         <framework src="AVFoundation.framework" />
 
         <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
-            <string>This app requires camera access to function properly.</string>
+            <string>BOSS Time Attendance Mobile uses the Camera and Photo Library to get pictures to be used in the facial recognition process and also when submitting incidents.</string>
         </config-file>
 
         <config-file target="*-Info.plist" parent="NSPhotoLibraryUsageDescription">
-            <string>This app requires photo library access to function properly.</string>
+            <string>BOSS Time Attendance Mobile uses the Camera and Photo Library to get pictures to be used in the facial recognition process and also when submitting incidents.</string>
         </config-file>
 
         <header-file src="src/ios/Diagnostic_Camera.h" />
@@ -150,121 +123,11 @@
         <source-file src="src/ios/Diagnostic_Notifications.m" />
         <!--END_MODULE NOTIFICATIONS-->
 
-        <!--BEGIN_MODULE MICROPHONE-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Microphone">
-                <param name="ios-package" value="Diagnostic_Microphone" />
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-
-        <js-module src="www/ios/diagnostic.microphone.js" name="Diagnostic_Microphone">
-            <merges target="cordova.plugins.diagnostic.microphone" />
-        </js-module>
-
-        <framework src="AVFoundation.framework" />
-
-        <config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
-            <string>This app requires microphone access to function properly.</string>
-        </config-file>
-
-        <header-file src="src/ios/Diagnostic_Microphone.h" />
-        <source-file src="src/ios/Diagnostic_Microphone.m" />
-        <!--END_MODULE MICROPHONE-->
-
-        <!--BEGIN_MODULE CONTACTS-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Contacts">
-                <param name="ios-package" value="Diagnostic_Contacts" />
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-
-        <js-module src="www/ios/diagnostic.contacts.js" name="Diagnostic_Contacts">
-            <merges target="cordova.plugins.diagnostic.contacts" />
-        </js-module>
-
-        <framework src="Contacts.framework" />
-        <framework src="AddressBook.framework" />
-
-        <config-file target="*-Info.plist" parent="NSContactsUsageDescription">
-            <string>This app requires contacts access to function properly.</string>
-        </config-file>
-
-        <header-file src="src/ios/Diagnostic_Contacts.h" />
-        <source-file src="src/ios/Diagnostic_Contacts.m" />
-        <!--END_MODULE CONTACTS-->
-
-        <!--BEGIN_MODULE CALENDAR-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Calendar">
-                <param name="ios-package" value="Diagnostic_Calendar" />
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-
-        <js-module src="www/ios/diagnostic.calendar.js" name="Diagnostic_Calendar">
-            <merges target="cordova.plugins.diagnostic.calendar" />
-        </js-module>
-
-        <framework src="EventKit.framework" />
-
-        <config-file target="*-Info.plist" parent="NSCalendarsUsageDescription">
-            <string>This app requires calendar access to function properly.</string>
-        </config-file>
-
-        <header-file src="src/ios/Diagnostic_Calendar.h" />
-        <source-file src="src/ios/Diagnostic_Calendar.m" />
-        <!--END_MODULE CALENDAR-->
-
-        <!--BEGIN_MODULE REMINDERS-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Reminders">
-                <param name="ios-package" value="Diagnostic_Reminders" />
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-
-        <js-module src="www/ios/diagnostic.reminders.js" name="Diagnostic_Reminders">
-            <merges target="cordova.plugins.diagnostic.reminders" />
-        </js-module>
-
-        <framework src="EventKit.framework" />
-
-        <config-file target="*-Info.plist" parent="NSRemindersUsageDescription">
-            <string>This app requires reminders access to function properly.</string>
-        </config-file>
-        
-        <header-file src="src/ios/Diagnostic_Reminders.h" />
-        <source-file src="src/ios/Diagnostic_Reminders.m" />
-        <!--END_MODULE REMINDERS-->
-
-        <!--BEGIN_MODULE MOTION-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Motion">
-                <param name="ios-package" value="Diagnostic_Motion" />
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-
-        <js-module src="www/ios/diagnostic.motion.js" name="Diagnostic_Motion">
-            <merges target="cordova.plugins.diagnostic.motion" />
-        </js-module>
-
-        <framework src="CoreMotion.framework" />
-
-        <config-file target="*-Info.plist" parent="NSMotionUsageDescription">
-            <string>This app requires motion detection access to function properly.</string>
-        </config-file>
-
-        <header-file src="src/ios/Diagnostic_Motion.h" />
-        <source-file src="src/ios/Diagnostic_Motion.m" />
-        <!--END_MODULE MOTION-->
     </platform>
 
     <platform name="android">
         <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic" >
+            <feature name="Diagnostic">
                 <param name="android-package" value="cordova.plugins.Diagnostic"/>
                 <param name="onload" value="true" />
             </feature>
@@ -283,7 +146,7 @@
 
         <!--BEGIN_MODULE LOCATION-->
         <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Location" >
+            <feature name="Diagnostic_Location">
                 <param name="android-package" value="cordova.plugins.Diagnostic_Location"/>
                 <param name="onload" value="true" />
             </feature>
@@ -298,7 +161,7 @@
 
         <!--BEGIN_MODULE BLUETOOTH-->
         <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Bluetooth" >
+            <feature name="Diagnostic_Bluetooth">
                 <param name="android-package" value="cordova.plugins.Diagnostic_Bluetooth"/>
                 <param name="onload" value="true" />
             </feature>
@@ -317,7 +180,7 @@
 
         <!--BEGIN_MODULE WIFI-->
         <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Wifi" >
+            <feature name="Diagnostic_Wifi">
                 <param name="android-package" value="cordova.plugins.Diagnostic_Wifi"/>
                 <param name="onload" value="true" />
             </feature>
@@ -332,7 +195,7 @@
 
         <!--BEGIN_MODULE CAMERA-->
         <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Camera" >
+            <feature name="Diagnostic_Camera">
                 <param name="android-package" value="cordova.plugins.Diagnostic_Camera"/>
                 <param name="onload" value="true" />
             </feature>
@@ -347,7 +210,7 @@
 
         <!--BEGIN_MODULE NOTIFICATIONS-->
         <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Notifications" >
+            <feature name="Diagnostic_Notifications">
                 <param name="android-package" value="cordova.plugins.Diagnostic_Notifications"/>
                 <param name="onload" value="true" />
             </feature>
@@ -380,7 +243,7 @@
 
         <!--BEGIN_MODULE NFC-->
         <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_NFC" >
+            <feature name="Diagnostic_NFC">
                 <param name="android-package" value="cordova.plugins.Diagnostic_NFC"/>
                 <param name="onload" value="true" />
             </feature>
@@ -395,7 +258,7 @@
 
         <!--BEGIN_MODULE EXTERNAL_STORAGE-->
         <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_External_Storage" >
+            <feature name="Diagnostic_External_Storage">
                 <param name="android-package" value="cordova.plugins.Diagnostic_External_Storage"/>
                 <param name="onload" value="true" />
             </feature>
